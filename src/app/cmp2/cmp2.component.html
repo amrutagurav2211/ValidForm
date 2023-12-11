@@ -1,0 +1,107 @@
+<div class="container">
+    <div class="form-group d-flex justify-content-end" >
+    
+        <button class="btn btn-light"> Cancle</button>
+        <button type="submit" class="btn btn-primary ms-5">Schedule</button>
+    </div>  
+
+<form name="myForm" #frm="ngForm" (ngSubmit)="frm.form.valid && submitForm(frm.value)">
+
+    <h2>Personal Info</h2>    
+    <br>
+    <input type="hidden" name="id" #id="ngModel" ngModel>
+    <div class="form-group">
+        <label for="nm" >First Name</label><span style="color:red">*</span>
+        <input type="text" class="form-control" name='nm' #nm="ngModel" ngModel [(ngModel)]="nmN" required maxlength="8"
+            [ngClass]="{'is-invalid': frm.submitted && nm.invalid }">
+        <div *ngIf="frm.submitted && nm.invalid" class="invalid-feedback">
+           First Name is required
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="unm">Last Name</label><span style="color:red">*</span>
+        <input type="text" class="form-control" name="unm" #unm="ngModel" ngModel [(ngModel)]="unmN" required
+            [ngClass]="{'is-invalid':frm.submitted && unm.invalid}">
+        <div *ngIf="frm.submitted && unm.invalid" class="invalid-feedback">Last Name is required
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="nm">Email</label><span style="color:red">*</span>
+        <input type="email" class="form-control" name="eml" #eml="ngModel" ngModel [(ngModel)]="emlN" required
+            [ngClass]="{'is-invalid':frm.submitted && eml.invalid}"
+            pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+        <div *ngIf="eml.touched" class="invalid-feedback">
+            <div *ngIf="eml.errors?.['required']">Email ID is required</div>
+            <div *ngIf="eml.errors?.['pattern']">Proper Email Required</div>
+        </div>
+    </div><br><br>
+
+    <h2>Company Info</h2>
+    <p>Tell us about your company</p><br>
+    
+    <div class="form-group">
+        <label>Company Name </label><span style="color:red">*</span>
+        <input type="text" class="form-control" name="cm" #cm="ngModel" ngModel [(ngModel)]="cmpn" required
+            [ngClass]="{'is-invalid':frm.submitted && cm.invalid}">
+        <div *ngIf="frm.submitted && cm.invalid" class="invalid-feedback">User Name is required
+        </div>
+    </div>
+
+    
+    <div class="form-group">
+        <label>Company Phone </label><span style="color:red">*</span>
+        <input type="text" class="form-control" name="cp" #cp="ngModel" ngModel [(ngModel)]="cmphone" required
+            [ngClass]="{'is-invalid':frm.submitted && cp.invalid}">
+        <div *ngIf="frm.submitted && cp.invalid" class="invalid-feedback">Company Name  is required
+        </div>
+    </div>
+
+    
+    <div class="form-group">
+        <label for="nm">Company Email</label><span style="color:red">*</span>
+        <input type="email" class="form-control" name="comeml" #comeml="ngModel" ngModel [(ngModel)]="comemlN" required
+            [ngClass]="{'is-invalid':frm.submitted && comeml.invalid}"
+            pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+        <div *ngIf="comeml.touched" class="invalid-feedback">
+            <div *ngIf="comeml.errors?.['required']">Company Email is required</div>
+            <div *ngIf="comeml.errors?.['pattern']">Proper Email Required</div>
+        </div>
+    </div><br><br>
+
+    <h2>Demontration</h2>
+    <p>how would you like your demo?</p>
+
+    <label for="nm">Product to demo</label>
+    <div class="form-group">
+        <input type="text" class="form-control" name="prdm" #prdm="ngModel" ngModel [(ngModel)]="prdtdm" required
+            [ngClass]="{'is-invalid':frm.submitted && prdm.invalid}">
+        <div *ngIf="frm.submitted && prdm.invalid" class="invalid-feedback">Product to demo is required
+        </div>
+    </div><br>
+
+    <label for="nm">Prefferd date</label>
+    <div class="form-group">
+        <input type="date" class="form-control" name="pd" #pd="ngModel" ngModel [(ngModel)]="pdemo" required
+            [ngClass]="{'is-invalid':frm.submitted && pd.invalid}">
+        <div *ngIf="frm.submitted && pd.invalid" class="invalid-feedback">User Name is required
+        </div>
+    </div><br>
+
+    <label for="nm">Special Instructions</label>
+    <div class="form-group">
+        <textarea class="form-control" name="spl" #spl="ngModel" ngModel [(ngModel)]="unmN" required
+            [ngClass]="{'is-invalid':frm.submitted && spl.invalid}"></textarea>
+        <div *ngIf="frm.submitted && spl.invalid" class="invalid-feedback">User Name is required
+        </div>
+    </div><br>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit Form</button>
+    </div>  
+</form>
+</div>
+
+
